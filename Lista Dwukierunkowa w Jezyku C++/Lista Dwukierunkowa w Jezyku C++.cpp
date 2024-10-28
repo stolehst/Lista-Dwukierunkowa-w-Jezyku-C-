@@ -99,3 +99,15 @@ public:
         }
         delete temp;
     }
+    void removeAt(int index) {                                                                                      //usuwamy element z podanego indeksu
+        if (index == 0) {
+            removeFromHead();
+            return;
+        }
+        //znajduje element na podanym indeksie
+        Node* current = head;
+        int pos = 0;
+        while (current && pos < index) {
+            current = current->next;
+            pos++;
+        }
