@@ -87,3 +87,15 @@ public:
         }
         delete temp;
     }
+    void removeFromBack() {                                                                                         //usuwamy element z końca listy
+        if (!back) return;                                                                                          //działa podobnie do removeFromHead ale usuwa elementy z końca listy
+        Node* temp = back;
+        back = back->prev;
+        if (back) {
+            back->next = nullptr;
+        }                                                                                                           //jeśli back zostaje usunięte, back będzie na nullptr co oznacza że lista jest pusta
+        else {
+            head = nullptr;
+        }
+        delete temp;
+    }
