@@ -62,3 +62,16 @@ public:
             cout << "Indeks poza zakresem " << endl;                                                                //jesli pozycja index jest poza zasięgiem (lista jest zbyt krótka) wypisuje błąd
             return;
         }
+        Node* newNode = new Node(value);
+        newNode->next = current->next;
+        newNode->prev = current;
+        //jesli element jest dodawany na koncu listy ustawia nowy ostatni element back
+        if (current->next) {
+            current->next->prev = newNode;
+        }
+        else {                                                                                                      //w przeciwnym razie wstawia element pomiędzy current a current->next
+            back = newNode;
+        }
+
+        current->next = newNode;
+    }
