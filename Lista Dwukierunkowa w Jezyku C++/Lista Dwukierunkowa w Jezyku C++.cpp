@@ -123,3 +123,11 @@ public:
 
         delete current;
     }
+    void display() {                                                                                                //wyswietlić całą liste
+        Node* current = head;                                                                                       //przechodzimy przez liste od head do back pokazując data dla każdego elementu
+        while (current) {
+            cout << current->data << " ";
+            current = current->next;
+        }
+        cout << endl;
+    }
