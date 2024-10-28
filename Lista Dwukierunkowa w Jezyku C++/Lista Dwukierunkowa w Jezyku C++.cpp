@@ -111,3 +111,15 @@ public:
             current = current->next;
             pos++;
         }
+        if (!current) {
+            cout << "Indeks poza zakresem " << endl;                                                                //jesli index jest poza zakresem listy wypisuje błąd
+            return;
+        }
+
+        if (current->prev) current->prev->next = current->next;                                                     //dostosujemy wskaźniki prev i next sąsiadujących elementow
+        if (current->next) current->next->prev = current->prev;
+
+        if (current == back) back = current->prev;                                                                  //jeśli usuwany element to back, aktualizujemy wskaźnik back
+
+        delete current;
+    }
