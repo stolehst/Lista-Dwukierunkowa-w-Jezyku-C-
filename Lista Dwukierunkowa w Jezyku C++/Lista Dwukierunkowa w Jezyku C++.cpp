@@ -75,3 +75,15 @@ public:
 
         current->next = newNode;
     }
+    void removeFromHead() {                                                                                         //usuwamy element z początlku listy
+        if (!head) return;                                                                                          //sprawdzamy czy lista nie jest pusta
+        Node* temp = head;
+        head = head->next;                                                                                          //ustawia head na następny element a jeśli lista ma więcej niż jeden element ustawia prev nowego pierwszego elementu na nullptr
+        if (head) {
+            head->prev = nullptr;
+        }
+        else {
+            back = nullptr;                                                                                         //jeśli usuniety element był jedynym na liscie back również będzie na nullptr
+        }
+        delete temp;
+    }
