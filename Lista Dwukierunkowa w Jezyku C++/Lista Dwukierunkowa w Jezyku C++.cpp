@@ -32,3 +32,15 @@ public:
             head = newNode;                                                                                         //a wskaźnik prev starej głowy wskazuje na newNode
         }
     }
+    void addRandomToBack() {                                                                                        //dodajemy losowy element na koniec listy
+        int value = rand() % 100;                                                                                   //losujemy liczbe w zakresie 0-99
+        Node* newNode = new Node(value);                                                                            //tak samo tworzymy nowy element o wygenerowanej wartosci
+        if (!back) {
+            head = back = newNode;                                                                                  //jesli lista jest pusta ustawia head i back na newNode
+        }
+        else {
+            newNode->prev = back;                                                                                   //w innym przypadku nowy elemnt staje się nowym ostatnim (back)
+            back->next = newNode;                                                                                   //wskaźnik prev elementu newNode wskazuje na poprzedni ostatni element
+            back = newNode;                                                                                         //a wskaźnik next starego ostatniego elementu wskazuje na newNode
+        }
+    }
