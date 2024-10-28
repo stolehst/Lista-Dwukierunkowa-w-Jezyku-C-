@@ -1,4 +1,4 @@
-﻿﻿#include <iostream>
+﻿#include <iostream>
 #include <cstdlib>                                                                                                  //#include <cstdlib> - dla rand() i srand()
 #include <ctime>                                                                                                    //#include <ctime> - dla time()
 using namespace std;
@@ -19,7 +19,8 @@ private:                                                                        
 public:
     DubleLinkedList() : head(nullptr), back(nullptr) {                                                              //ustawiamy wskaźniki head i back na nullptr, ponieważ lista jest początkowo pusta
         srand(static_cast<unsigned>(time(nullptr)));                                                                //ustawiamy tak aby za każdym uruchomieniem programu liczby były inne
-    }
+    }                                                                                                               //time(nullptr) zwraca aktualny czas co oznacza że liczby są unikalne
+
     void addRandomToHead() {                                                                                        //dodaje losowy element na początek listy
         int value = rand() % 100;                                                                                   //losowanie w zakresie 0-99
         Node* newNode = new Node(value);                                                                            //tworzy nowy element o wygenerowanej wartosci
@@ -32,6 +33,7 @@ public:
             head = newNode;                                                                                         //a wskaźnik prev starej głowy wskazuje na newNode
         }
     }
+
     void addRandomToBack() {                                                                                        //dodajemy losowy element na koniec listy
         int value = rand() % 100;                                                                                   //losujemy liczbe w zakresie 0-99
         Node* newNode = new Node(value);                                                                            //tak samo tworzymy nowy element o wygenerowanej wartosci
@@ -44,6 +46,7 @@ public:
             back = newNode;                                                                                         //a wskaźnik next starego ostatniego elementu wskazuje na newNode
         }
     }
+
     void insertRandomAt(int index) {                                                                                //dodawanie losowego elementu pod wskazany indeks
         int value = rand() % 100;                                                                                   //losowanie liczby w zakresie 0-99
         if (index == 0) {                                                                                           //generujemy losową wartosc i sprawdzamy czy index jest równy 0
@@ -62,6 +65,7 @@ public:
             cout << "Indeks poza zakresem " << endl;                                                                //jesli pozycja index jest poza zasięgiem (lista jest zbyt krótka) wypisuje błąd
             return;
         }
+
         Node* newNode = new Node(value);
         newNode->next = current->next;
         newNode->prev = current;
@@ -75,6 +79,7 @@ public:
 
         current->next = newNode;
     }
+
     void removeFromHead() {                                                                                         //usuwamy element z początlku listy
         if (!head) return;                                                                                          //sprawdzamy czy lista nie jest pusta
         Node* temp = head;
@@ -87,6 +92,7 @@ public:
         }
         delete temp;
     }
+
     void removeFromBack() {                                                                                         //usuwamy element z końca listy
         if (!back) return;                                                                                          //działa podobnie do removeFromHead ale usuwa elementy z końca listy
         Node* temp = back;
@@ -99,6 +105,7 @@ public:
         }
         delete temp;
     }
+
     void removeAt(int index) {                                                                                      //usuwamy element z podanego indeksu
         if (index == 0) {
             removeFromHead();
@@ -111,6 +118,7 @@ public:
             current = current->next;
             pos++;
         }
+
         if (!current) {
             cout << "Indeks poza zakresem " << endl;                                                                //jesli index jest poza zakresem listy wypisuje błąd
             return;
@@ -123,6 +131,7 @@ public:
 
         delete current;
     }
+
     void display() {                                                                                                //wyswietlić całą liste
         Node* current = head;                                                                                       //przechodzimy przez liste od head do back pokazując data dla każdego elementu
         while (current) {
@@ -131,6 +140,7 @@ public:
         }
         cout << endl;
     }
+
     void displayReverse() {                                                                                         //wyświetlamy listę w odwrotnej kolejności
         Node* current = back;
         while (current) {
@@ -139,6 +149,7 @@ public:
         }
         cout << endl;
     }
+
     void clear() {                                                                                                  //czyszczymy całą listę
         while (head) {
             removeFromHead();                                                                                       //używając removeFromHead() w pętli usuwamy każdy element zaczynając od początkowego
@@ -149,6 +160,7 @@ public:
         clear();
     }
 };
+
 int main() {
     DubleLinkedList list;                                                                                           //tworzymy nowa liste dwukierunkowa o nazwie list
 
