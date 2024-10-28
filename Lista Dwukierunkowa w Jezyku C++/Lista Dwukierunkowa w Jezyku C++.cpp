@@ -131,3 +131,11 @@ public:
         }
         cout << endl;
     }
+    void displayReverse() {                                                                                         //wyświetlamy listę w odwrotnej kolejności
+        Node* current = back;
+        while (current) {
+            cout << current->data << " ";                                                                           //przechodzimy przez całą liste od back do head wyświetlając znaczenia dla każdego elementu
+            current = current->prev;
+        }
+        cout << endl;
+    }
