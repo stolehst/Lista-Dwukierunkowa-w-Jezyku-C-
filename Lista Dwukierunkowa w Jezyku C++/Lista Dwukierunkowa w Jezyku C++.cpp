@@ -44,3 +44,21 @@ public:
             back = newNode;                                                                                         //a wskaźnik next starego ostatniego elementu wskazuje na newNode
         }
     }
+    void insertRandomAt(int index) {                                                                                //dodawanie losowego elementu pod wskazany indeks
+        int value = rand() % 100;                                                                                   //losowanie liczby w zakresie 0-99
+        if (index == 0) {                                                                                           //generujemy losową wartosc i sprawdzamy czy index jest równy 0
+            addRandomToHead();                                                                                      //jesli tak to dodaje element na początek listy
+            return;
+        }
+
+        Node* current = head;
+        int pos = 0;
+        while (current && pos < index - 1) {                                                                        //przechodzi przez listę żeby znaleźć element na pozycji (index - 1)
+            current = current->next;
+            pos++;
+        }
+
+        if (!current) {
+            cout << "Indeks poza zakresem " << endl;                                                                //jesli pozycja index jest poza zasięgiem (lista jest zbyt krótka) wypisuje błąd
+            return;
+        }
