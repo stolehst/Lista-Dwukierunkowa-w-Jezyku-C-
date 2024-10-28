@@ -149,3 +149,30 @@ public:
         clear();
     }
 };
+int main() {
+    DubleLinkedList list;                                                                                           //tworzymy nowa liste dwukierunkowa o nazwie list
+
+    list.addRandomToHead();                                                                                         //dodajemy losowy element na poczatek listy 
+    list.addRandomToHead();                                                                                         //wykonujemy dwa razy, co oznacza, że na początku listy znajdą się dwa losowe elemennty
+    list.addRandomToBack();                                                                                         //dodajemy losowy element na koniec listy
+    list.insertRandomAt(1);                                                                                         //umieszczamy nowy element pomiędzy początkiem listy i drugim elementem
+
+    cout << "Lista z losowymi wartościami: ";
+    list.display();                                                                                                 //wyświetlamy wszystkie elementy za pomocą display()
+
+    cout << "Lista w odwrotnej kolejności: ";
+    list.displayReverse();                                                                                          //wyświetlamy listę w odwrotnej kolejności elementów
+
+    list.removeFromHead();                                                                                          //usuwamy początkowy element listy
+    list.removeFromBack();                                                                                          //usuwamy końcowy element listy
+    list.removeAt(0);                                                                                               //usuwamy element pod wskazanym indeksem (usuwany jest drugi element listy jednak już jest usunięty pierszy element 
+
+    cout << "Lista po usunięciu elementów: ";
+    list.display();                                                                                                 //będzie wypisany jeden element listy (trzeci element) po wykonaniu dizłań z usunięciem
+
+    list.clear();                                                                                                   //czyszczenie listy
+    cout << "Lista po wyczyszczeniu: ";
+    list.display();                                                                                                 //wyświetlamy listę po usunięciu
+
+    return 0;
+}
