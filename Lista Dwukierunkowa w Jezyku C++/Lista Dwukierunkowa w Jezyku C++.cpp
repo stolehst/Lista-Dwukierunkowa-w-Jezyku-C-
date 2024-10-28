@@ -1,20 +1,12 @@
-﻿// Lista Dwukierunkowa w Jezyku C++.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+﻿﻿#include <iostream>
+#include <cstdlib>                                                                                                  //#include <cstdlib> - dla rand() i srand()
+#include <ctime>                                                                                                    //#include <ctime> - dla time()
+using namespace std;
 
-#include <iostream>
-
-int main()
-{
-    std::cout << "Hello World!\n";
-}
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
+struct Node {                                                                                                       //Node bedzie reprezentować pojedynczy element w liscie dwukierunkowej. Składa się z trzech częsci:
+    int data;                                                                                                       //data - przechowuje wartość 
+    Node* prev;                                                                                                     //prev — wskaznik na poprzedni element listy
+    Node* next;                                                                                                     //next — wskaznik na następny element w liście
+    Node(int value) : data(value), prev(nullptr), next(nullptr) {}                                                  //Node(int value) ustawia wartosc data na value, 
+    //a wskaźniki prev(nullptr) i next(nullptr) na nullptr co oznacza że poczatkowo element nie jest połączony z innymi elementami
+};
